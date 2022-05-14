@@ -48,7 +48,8 @@ const usuariosDelete = async (req, res = response) => {
   //Borrado REAL, tratar de no usar para no perder datos ni referencias
   /* const usuario = await Usuario.findByIdAndDelete(id) */
 
-  const usuario = await Usuario.findByIdAndUpdate(id, {estado: false})
+  let usuario = await Usuario.findByIdAndUpdate(id, {estado: false})
+  usuario = await Usuario.findById(id)
 
   res.json({
     usuario,
